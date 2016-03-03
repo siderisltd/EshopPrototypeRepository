@@ -81,6 +81,11 @@ namespace Eshop.Web
                 .SelectAllClasses()
                 .BindDefaultInterface());
 
+            kernel.Bind(x => x
+                .From(Assemblies.ServicesCommonAssembly)
+                .SelectAllClasses()
+                .BindDefaultInterface());
+
             //kernel.Bind(x => x
             //    .From(Assemblies.ServicesWebAssembly)
             //    .SelectAllClasses()
