@@ -1,44 +1,81 @@
 ﻿<!DOCTYPE html>
-<html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+ <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Trizzy</title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/theme-css")
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="css/colors/green.css" id="colors">
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+<body class="boxed">
+    <div id="wrapper">
+
+
+        <!-- Top Bar
+        ================================================== -->
+        @Html.Partial("TopBar")
+
+        <div class="clearfix"></div>
+
+
+        <!-- Header
+        ================================================== -->
+        @Html.Partial("Header")
+
+
+        <!-- Navigation
+        ================================================== -->
+        @Html.Partial("Navigation")
+
+
+        <!-- Titlebar
+        ================================================== -->
+        @Html.Partial("TitleBar")
+
+
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            @RenderBody()
+
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+        <div class="margin-top-15"></div>
+
+
+        <!-- Footer
+        ================================================== -->
+        @Html.Partial("Footer")
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+    <!-- Java Script
+    ================================================== -->
+    @Scripts.Render("~/bundles/theme-scripts")
+
+
+    <!-- Style Switcher
+    ================================================== -->
+    @Html.Partial("StyleSwitcher")
+
 </body>
 </html>

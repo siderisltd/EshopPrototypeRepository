@@ -2,30 +2,207 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<!-- Sidebar
+================================================== -->
+<div class="four columns">
+
+    <!-- Categories -->
+    <div class="widget margin-top-0">
+        <h3 class="headline">Categories</h3><span class="line"></span><div class="clearfix"></div>
+
+        <ul id="categories">
+
+            <li>
+                <a href="#">Accessories <span>(8)</span></a>
+                <ul>
+                    <li><a href="#">Hats <span>(2)</span></a></li>
+                    <li><a href="#">Bags <span>(2)</span></a></li>
+                    <li><a href="#">Gloves  <span>(1)</span></a></li>
+                    <li><a href="#">Belts <span>(3)</span></a></li>
+
+                    <li>
+                        <a href="#">Accessories <span>(8)</span></a>
+                        <ul>
+                            <li><a href="#">Hats <span>(2)</span></a></li>
+                            <li><a href="#">Bags <span>(2)</span></a></li>
+                            <li><a href="#">Gloves  <span>(1)</span></a></li>
+                            <li><a href="#">Belts <span>(3)</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Jewelry <span>(12)</span></a>
+                <ul>
+                    <li><a href="#">Rings <span>(3)</span></a></li>
+                    <li><a href="#">Necklaces  <span>(2)</span></a></li>
+                    <li><a href="#">Bracelets <span>(4)</span></a></li>
+                    <li><a href="#">Watches <span>(3)</span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Gifts <span>(3)</span></a>
+                <ul>
+                    <li><a href="#">Headphones <span>(1)</span></a></li>
+                    <li><a href="#">Books  <span>(2)</span></a></li>
+                    <li>
+                        <a href="#">Gifts <span>(3)</span></a>
+                        <ul>
+                            <li><a href="#">Headphones <span>(1)</span></a></li>
+                            <li><a href="#">Books  <span>(2)</span></a></li>
+                            <li>
+                                <a href="#">Gifts <span>(3)</span></a>
+                                <ul>
+                                    <li><a href="#">Headphones <span>(1)</span></a></li>
+                                    <li><a href="#">Books  <span>(2)</span></a></li>
+                                    <li><a href="#">Gifts <span>(3)</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Men's Wear <span>(14)</span></a>
+                <ul>
+                    <li><a href="#">Denim <span>(3)</span></a></li>
+                    <li><a href="#">Shirts <span>(4)</span></a></li>
+                    <li><a href="#">Jackets  <span>(2)</span></a></li>
+                    <li><a href="#">Suits <span>(3)</span></a></li>
+                    <li><a href="#">Pants <span>(2)</span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Women's Wear <span>(20)</span></a>
+                <ul>
+                    <li><a href="#">Denim <span>(2)</span></a></li>
+                    <li><a href="#">Skirts <span>(3)</span></a></li>
+                    <li><a href="#">Dresses <span>(5)</span></a></li>
+                    <li><a href="#">Shirts <span>(4)</span></a></li>
+                    <li><a href="#">Jumpsuits <span>(4)</span></a></li>
+                    <li><a href="#">Shoes <span>(2)</span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Miscellaneous <span>(3)</span></a>
+                <ul>
+                    <li><a href="#">Lamps <span>(1)</span></a></li>
+                    <li><a href="#">Mugs  <span>(2)</span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Levels Example <span>(7)</span></a>
+                <ul>
+                    <li><a href="#">Books <span>(1)</span></a></li>
+                    <li>
+                        <a href="#">Headphones <span>(6)</span></a>
+                        <ul>
+                            <li>
+                                <a href="#">Open <span>(2)</span></a>
+                                <ul>
+                                    <li><a href="#">Sennheiser</a></li>
+                                    <li><a href="#">Beyerdynamic</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Closed <span>(4)</span></a>
+                                <ul>
+                                    <li><a href="#">Beyerdynamic</a></li>
+                                    <li><a href="#">Denon</a></li>
+                                    <li><a href="#">Sennheiser</a></li>
+                                    <li><a href="#">AKG</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <div class="clearfix"></div>
+
+    </div>
+
+
+    <!-- Widget -->
+    <div class="widget">
+        <h3 class="headline">Filter By Price</h3><span class="line"></span><div class="clearfix"></div>
+
+        <div id="price-range">
+            <div class="padding-range"><div id="slider-range"></div></div>
+            <label for="amount">Price:</label>
+            <input type="text" id="amount" />
+            <a href="#" class="button color">Filter</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+<!-- Content
+================================================== -->
+<div class="twelve columns">
+
+    <!-- Ordering -->
+    <select class="orderby">
+        <option>Default Sorting</option>
+        <option>Sort by Popularity</option>
+        <option>Sort by Newness</option>
+    </select>
+
+</div>
+
+<!-- Products -->
+<div class="twelve columns products">
+
+    <!-- Product #1 -->
+    <div class="four shop columns">
+        <figure class="product">
+            <div class="mediaholder">
+                <a href="variable-product-page.html">
+                    <img alt="" src="images/shop_item_01.jpg" />
+                    <div class="cover">!
+                        <img alt="" src="images/shop_item_01_hover.jpg" />
+                    </div>
+                </a>
+                <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+            </div>
+
+            <a href="variable-product-page.html">
+                <section>
+                    <span class="product-category">Skirts</span>
+                    <h5>Brown Mini Skirt</h5>
+                    <span class="product-price">$79.00</span>
+                </section>
+            </a>
+        </figure>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="clearfix"></div>
+
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <nav class="pagination">
+            <ul>
+                <li><a href="#" class="current-page">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+            </ul>
+        </nav>
+
+        <nav class="pagination-next-prev">
+            <ul>
+                <li><a href="#" class="prev"></a></li>
+                <li><a href="#" class="next"></a></li>
+            </ul>
+        </nav>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
