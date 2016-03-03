@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace Eshop.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IItemsService itemsService;
 
@@ -14,21 +14,17 @@ namespace Eshop.Web.Controllers
 
         public ActionResult Index()
         {
-            return this.View();
-        }
 
-        public ActionResult About()
-        {
-            this.ViewBag.Message = "Your application description page.";
+            //TODO: Inherit BaseController in every controller this is a sample usage of the cache service 
 
-            return this.View();
-        }
+            //var newestPosts = this.Cache.Get(
+            //"newestPosts",
+            //() => this.articlesService.GetNewestPosts(16).To<ArticleViewModel>().ToList(), 10);
 
-        public ActionResult Contact()
-        {
-            this.ViewBag.Message = "Your contact page.";
+            //And you have this.Mapper also and you can map objects with it...
 
             return this.View();
         }
+
     }
 }

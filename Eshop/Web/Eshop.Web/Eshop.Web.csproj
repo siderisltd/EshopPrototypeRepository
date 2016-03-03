@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -190,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -528,6 +533,10 @@
     <ProjectReference Include="..\..\GlobalConstants\GlobalConstants.csproj">
       <Project>{ffc1ec59-8ffb-46bf-baba-b651ad6c73ca}</Project>
       <Name>GlobalConstants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Eshop.Services.Common\Eshop.Services.Common.csproj">
+      <Project>{B3478130-4FD0-4C81-897A-7AFDB80B9B4F}</Project>
+      <Name>Eshop.Services.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\Eshop.Services.Data\Eshop.Services.Data.csproj">
       <Project>{490c8bd7-7b8d-49b4-843b-a9260940f6c7}</Project>
