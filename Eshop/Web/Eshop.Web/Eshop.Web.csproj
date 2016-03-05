@@ -195,6 +195,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -509,6 +510,7 @@
     <Content Include="Views\Shared\TitleBar.cshtml" />
     <Content Include="Views\Shared\StyleSwitcher.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Categories\AddCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -529,6 +531,10 @@
     <ProjectReference Include="..\..\Data\Eshop.Data\Eshop.Data.csproj">
       <Project>{5CFB0A36-0EA0-4453-9EF5-60734AA382A5}</Project>
       <Name>Eshop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Eshop.Web.DataTransferModels\Eshop.Web.DataTransferModels.csproj">
+      <Project>{aa17e4bf-0a7e-41a5-b70c-b4b51001ec78}</Project>
+      <Name>Eshop.Web.DataTransferModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\GlobalConstants\GlobalConstants.csproj">
       <Project>{ffc1ec59-8ffb-46bf-baba-b651ad6c73ca}</Project>

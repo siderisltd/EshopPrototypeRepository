@@ -7,7 +7,7 @@ namespace Eshop.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-
+    using System;
     public sealed class Configuration : DbMigrationsConfiguration<Eshop.Data.EshopDbContext>
     {
         public Configuration()
@@ -29,6 +29,7 @@ namespace Eshop.Data.Migrations
                 this.CreateCarts(context, seededUsers);
                 this.CreateWishLists(context, seededUsers);
                 this.CreatePurchaseHistory(context, seededUsers);
+                this.CreateCategories(context);
             }
         }
         private void CreateCarts(EshopDbContext context, IList<User> seededUsers)
@@ -55,6 +56,24 @@ namespace Eshop.Data.Migrations
             {
                 user.PurchaseHistory = new PurchaseHistory();
             }
+            context.SaveChanges();
+        }
+
+        private void CreateCategories(EshopDbContext context)
+        {
+            var categories = new List<string>() {"Art","Candles","Cars","Clothes","Cameras","Books" };
+
+            foreach (var name in categories)
+            {
+                var current = new Category
+                {
+                    CreatedOn = DateTime.Now,
+                    Name = name,
+                };
+
+                context.Categories.Add(current);
+            }
+
             context.SaveChanges();
         }
 
