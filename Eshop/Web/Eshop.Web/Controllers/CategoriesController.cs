@@ -30,7 +30,6 @@
                                             {
                                                 Id = x.Id,
                                                 Name = x.Name,
-                                                ParentId = (x.ParentId == null) ? -1 : x.ParentId
                                             })
                                             .ToList();
             return View(modelToReturn);
