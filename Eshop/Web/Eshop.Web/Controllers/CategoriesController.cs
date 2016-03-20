@@ -1,10 +1,10 @@
 ﻿namespace Eshop.Web.Controllers
 {
-    using DataTransferModels.Category;
     using Infrastructure.Mapping.Contracts;
     using Services.Data.Contracts;
     using System.Linq;
     using System.Web.Mvc;
+    using Models;
 
     [Authorize]
     public class CategoriesController : BaseController
@@ -19,20 +19,12 @@
         [HttpGet]
         public ActionResult AddCategory()
         {
-            //does not map with the custom mapping
-            //var modelToReturn = this.categoriesService
-            //                                .GetAllCategories()
-            //                                .To<AllCategoriesViewModel>()
-            //                                .ToList();
-            var modelToReturn = this.categoriesService
+            var allCategories = this.categoriesService
                                             .GetAllCategories()
-                                            .Select(x => new AllCategoriesViewModel
-                                            {
-                                                Id = x.Id,
-                                                Name = x.Name,
-                                            })
+                                            .To<CategoryViewModel>()
                                             .ToList();
-            return View(modelToReturn);
+
+            return View(allCategories);
         }
 
     }

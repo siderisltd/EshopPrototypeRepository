@@ -59,24 +59,6 @@ namespace Eshop.Data.Migrations
             context.SaveChanges();
         }
 
-        private void CreateCategories(EshopDbContext context)
-        {
-            var categories = new List<string>() {"Art","Candles","Cars","Clothes","Cameras","Books" };
-
-            foreach (var name in categories)
-            {
-                var current = new Category
-                {
-                    CreatedOn = DateTime.Now,
-                    Name = name,
-                };
-
-                context.Categories.Add(current);
-            }
-
-            context.SaveChanges();
-        }
-
         private IList<User> SeedAppUsers(EshopDbContext context, UserManager<User> userManager)
         {
             var result = new List<User>();
@@ -121,6 +103,24 @@ namespace Eshop.Data.Migrations
                     context.Roles.Add(new IdentityRole(roleName));
                 }
             }
+        }
+
+        private void CreateCategories(EshopDbContext context)
+        {
+            var categories = new List<string>() { "Art", "Candles", "Cars", "Clothes", "Cameras", "Books" };
+
+            foreach (var name in categories)
+            {
+                var current = new Category
+                {
+                    CreatedOn = DateTime.Now,
+                    Name = name,
+                };
+
+                context.Categories.Add(current);
+            }
+
+            context.SaveChanges();
         }
     }
 }

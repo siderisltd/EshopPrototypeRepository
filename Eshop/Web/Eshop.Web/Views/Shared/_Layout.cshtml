@@ -4,22 +4,14 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-
-    <!-- Basic Page Needs
-    ================================================== -->
     <meta charset="utf-8">
-    <title>Trizzy</title>
+    <title>Cappricho</title>
 
-    <!-- Mobile Specific Metas
-    ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- CSS
-    ================================================== -->
-    @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/theme-css")
-    @Scripts.Render("~/bundles/jquery")
-    <link rel="stylesheet" href="css/colors/green.css" id="colors">
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/Theme/colors/green.css" id="colors">
 
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -29,52 +21,23 @@
 
 <body class="boxed">
     <div id="wrapper">
-
-
-        <!-- Top Bar
-        ================================================== -->
-        @Html.Partial("TopBar")
-
+        @Html.Partial("Partials/_TopBar")
         <div class="clearfix"></div>
-
-
-        <!-- Header
-        ================================================== -->
-        @Html.Partial("Header")
-
-
-        <!-- Navigation
-        ================================================== -->
-        @Html.Partial("Navigation")
-
-
-        <!-- Titlebar
-        ================================================== -->
-        @Html.Partial("TitleBar")
+        @Html.Partial("Partials/_Header")
+        @Html.Partial("Partials/_Navigation")
+        @Html.Partial("Partials/_TitleBar")
 
 
         <div class="container">
             @RenderBody()
-
         </div>
-
         <div class="margin-top-15"></div>
 
-
-        <!-- Footer
-        ================================================== -->
-        @Html.Partial("Footer")
-
+        @Html.Partial("Partials/_Footer")
     </div>
 
-
-    <!-- Java Script
-    ================================================== -->
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/theme-scripts")
     @RenderSection("scripts", required: false)
-    <!-- Style Switcher
-    ================================================== -->
-    @Html.Partial("StyleSwitcher")
-
 </body>
 </html>
