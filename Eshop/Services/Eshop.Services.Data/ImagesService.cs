@@ -10,7 +10,6 @@
     using Contracts;
     using DTO;
     using Eshop.Data.Repositories;
-    using Microsoft.AspNet.Identity;
     using Image = Eshop.Data.Models.Image;
 
     public class ImagesService : BaseService<Image> , IImagesService

@@ -1,12 +1,13 @@
 ﻿namespace Eshop.Web.Controllers
 {
-    using Infrastructure.Mapping.Contracts;
     using Services.Data.Contracts;
-    using System.Linq;
     using System.Web.Mvc;
-    using Models;
+    using Data.Common.Roles;
+    using Data.Models;
+    using Helpers.Filters;
+    using Models.Categories;
 
-    [Authorize]
+    [AuthorizeRoles(AppRoles.ADMIN_ROLE, AppRoles.CLIENT_ROLE, AppRoles.ULTIMATE_ROLE)]
     public class CategoriesController : BaseController
     {
         private ICategoriesService categoriesService;
@@ -16,16 +17,36 @@
             this.categoriesService = service;
         }
 
-        [HttpGet]
-        public ActionResult AddCategory()
+        public ActionResult Index()
         {
-            var allCategories = this.categoriesService
-                                            .GetAllCategories()
-                                            .To<CategoryViewModel>()
-                                            .ToList();
-
-            return View(allCategories);
+            return View();
         }
+
+        [AjaxActionFilter]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(CategoryViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View("Index", model);
+            }
+            var category = new Category { Name = model.Name, ParentId = model.ParentId };
+            this.categoriesService.AddCategory(category);
+            this.TempData["Notification"] = "Category added";
+            return this.JavaScript("window.location = '/Home/Index'");
+        }
+
+
+        //[HttpGet]
+        //public ActionResult GetAll()
+        //{
+        //    var allCategories = this.categoriesService
+        //                                    .GetAllCategories()
+        //                                    .To<CategoryViewModel>()
+        //                                    .ToList();
+
+        //    return View(allCategories);
+        //}
 
     }
 }

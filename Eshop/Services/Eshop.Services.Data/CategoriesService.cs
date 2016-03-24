@@ -17,8 +17,19 @@ namespace Eshop.Services.Data
 
         public IQueryable<Category> GetAllCategories()
         {
-            var categoriesToReturn = this.repo.All().Where(x => x.IsDeleted != true);
-            return categoriesToReturn;
+            return this.repo.All();
+        }
+
+        public IQueryable<Category> GetMainCategories()
+        {
+            return this.repo.All().Where(x => x.ParentId == null);
+        }
+
+        public Category AddCategory(Category model)
+        {
+            this.repo.Add(model);
+            this.repo.SaveChanges();
+            return model;
         }
 
     }

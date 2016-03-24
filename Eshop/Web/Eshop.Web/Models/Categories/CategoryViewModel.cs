@@ -1,6 +1,5 @@
-﻿namespace Eshop.Web.Models
+﻿namespace Eshop.Web.Models.Categories
 {
-    using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping.Contracts;
 
@@ -8,8 +7,8 @@
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
-
         public int? ParentId { get; set; }
+
+        public string Name { get; set; }
     }
 }

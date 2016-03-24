@@ -7,7 +7,6 @@ namespace Eshop.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-    using System;
     public sealed class Configuration : DbMigrationsConfiguration<Eshop.Data.EshopDbContext>
     {
         public Configuration()
@@ -107,19 +106,58 @@ namespace Eshop.Data.Migrations
 
         private void CreateCategories(EshopDbContext context)
         {
-            var categories = new List<string>() { "Art", "Candles", "Cars", "Clothes", "Cameras", "Books" };
-
-            foreach (var name in categories)
+            var mensCategory = new Category
             {
-                var current = new Category
-                {
-                    CreatedOn = DateTime.Now,
-                    Name = name,
-                };
+                Name = "Mens"
+            };
 
-                context.Categories.Add(current);
-            }
+            var womansCategory = new Category
+            {
+                Name = "Womans"
+            };
 
+            var womansVibratorsCategory = new Category
+            {
+                Name = "Vibrators",
+                Parent = womansCategory
+            };
+
+            var mensShoesCategory = new Category
+            {
+                Name = "Shoes",
+                Parent = mensCategory
+            };
+
+            var mensShirtsCategory = new Category
+            {
+                Name = "Shirts",
+                Parent = mensCategory
+            };
+
+            var mensSweatersCategory = new Category
+            {
+                Name = "Sweaters",
+                Parent = mensCategory
+            };
+
+            var normalSweatersCategory = new Category
+            {
+                Name = "Normal",
+                Parent = mensSweatersCategory
+            };
+
+            var fetishSweatersCategory = new Category
+            {
+                Name = "Fetish",
+                Parent = mensSweatersCategory
+            };
+
+
+            context.Categories.Add(womansVibratorsCategory);
+            context.Categories.Add(mensShoesCategory);
+            context.Categories.Add(mensShirtsCategory);
+            context.Categories.Add(normalSweatersCategory);
+            context.Categories.Add(fetishSweatersCategory);
             context.SaveChanges();
         }
     }

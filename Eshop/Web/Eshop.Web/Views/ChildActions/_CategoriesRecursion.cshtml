@@ -1,0 +1,31 @@
+﻿@using Eshop.Web.Models
+@using Eshop.Web.Models.Categories
+@model Eshop.Web.Models.Categories.CategoriesTreeModel
+
+@{
+    var unorderedListId = string.Empty;
+
+    if (ViewData["unorderedListId"] == null)
+    {
+        unorderedListId = "categories";
+    }
+}
+
+@if (Model.Categories.Any(s => s.ParentId == Model.Seed))
+{
+    <ul id="@unorderedListId">
+
+        @foreach (var category in Model.Categories)
+        {
+            if (category.ParentId == Model.Seed)
+            {
+                CategoriesTreeModel inner = new CategoriesTreeModel {Seed = category.Id, Categories = Model.Categories};
+
+                <li>
+                    <a href="#">@category.Name</a>
+                    @Html.Partial("_CategoriesRecursion", inner, new ViewDataDictionary {{"unorderedListId", "someValue"}})
+                </li>
+            }
+        }
+    </ul>
+}

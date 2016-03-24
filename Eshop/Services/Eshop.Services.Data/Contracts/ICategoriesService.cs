@@ -6,5 +6,9 @@
     public interface ICategoriesService
     {
         IQueryable<Category> GetAllCategories();
+
+        IQueryable<Category> GetMainCategories();
+
+        Category AddCategory(Category model);
     }
 }
