@@ -17,18 +17,20 @@
             this.categoriesService = service;
         }
 
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Manage()
         {
             return View();
         }
 
+        [HttpPost]
         [AjaxActionFilter]
         [ValidateAntiForgeryToken]
         public ActionResult Add(CategoryViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
-                return this.View("Index", model);
+                return this.View("Manage", model);
             }
             var category = new Category { Name = model.Name, ParentId = model.ParentId };
             this.categoriesService.AddCategory(category);
@@ -36,17 +38,28 @@
             return this.JavaScript("window.location = '/Home/Index'");
         }
 
+        [HttpDelete]
+        [AjaxActionFilter]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(CategoryViewModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View("Manage", model);
+            }
 
-        //[HttpGet]
-        //public ActionResult GetAll()
-        //{
-        //    var allCategories = this.categoriesService
-        //                                    .GetAllCategories()
-        //                                    .To<CategoryViewModel>()
-        //                                    .ToList();
+            bool success = this.categoriesService.DeleteCategory(model.Id);
+            if (success)
+            {
+                this.TempData["Notification"] = "Category deleted";
+                return this.JavaScript("window.location = '/Home/Index'");
+            }
+            else
+            {
+                return this.View("Manage", model);
+            }
 
-        //    return View(allCategories);
-        //}
+        }
 
     }
 }

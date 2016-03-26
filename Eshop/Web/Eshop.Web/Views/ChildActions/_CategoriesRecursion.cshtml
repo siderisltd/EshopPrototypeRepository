@@ -22,7 +22,7 @@
                 CategoriesTreeModel inner = new CategoriesTreeModel {Seed = category.Id, Categories = Model.Categories};
 
                 <li>
-                    <a href="#">@category.Name</a>
+                    <a href="/Items/ByCategory?category=@category.Name&id=@category.Id" data-cat-id="@category.Id">@category.Name</a>
                     @Html.Partial("_CategoriesRecursion", inner, new ViewDataDictionary {{"unorderedListId", "someValue"}})
                 </li>
             }

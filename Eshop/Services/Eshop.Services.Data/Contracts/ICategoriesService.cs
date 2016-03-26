@@ -10,5 +10,7 @@
         IQueryable<Category> GetMainCategories();
 
         Category AddCategory(Category model);
+
+        bool DeleteCategory(int Id);
     }
 }

@@ -215,6 +215,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\imgs\header-image.jpg" />
     <Content Include="Content\Theme\base.css" />
     <Content Include="Content\Theme\colors\beige.css" />
     <Content Include="Content\Theme\colors\blue.css" />
@@ -513,8 +514,7 @@
     <Content Include="Views\Shared\Partials\_Navigation.cshtml" />
     <Content Include="Views\Shared\Partials\_TitleBar.cshtml" />
     <Content Include="Views\Shared\Partials\_Footer.cshtml" />
-    <Content Include="Views\Categories\AddCategory.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\Manage.cshtml" />
     <None Include="Views\ChildActions\_Categories.cshtml" />
     <Content Include="Views\ChildActions\_CategoriesRecursion.cshtml" />
   </ItemGroup>
@@ -594,7 +594,7 @@
     <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-    <PropertyGroup>
+  <PropertyGroup>
     <PostBuildEvent>
        if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
        start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"

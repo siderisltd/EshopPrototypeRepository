@@ -1,0 +1,151 @@
+﻿@model Eshop.Web.Models.Categories.CategoryViewModel
+
+@{
+    ViewBag.Title = "Create category";
+}
+
+<div id="categories-add-error-msg" style="display:none;"></div>
+
+@Html.ValidationSummary()
+@Html.AntiForgeryToken()
+
+@Html.LabelFor(x => x.Name)
+@Html.TextBoxFor(x => x.Name, new { id = "category-name-input" })
+
+<label><input class="select-category-type" type="radio" name="selectType" value="main"> Main category<br></label>
+<label><input class="select-category-type" type="radio" name="selectType" value="sub"> Sub category<br></label>
+<label><input class="select-category-type" type="radio" name="selectType" value="del"> Delete category<br></label>
+
+<div id="categories-holder" style="display:none;">
+    @Html.Action("GetCategoriesTree", "ChildActions")
+</div>
+
+
+<input id="create-button" type="submit" value="Create" style="display: none;" />
+<input id="delete-button" type="submit" value="Delete" style="display: none;" />
+
+@section overridingStyles {
+    <style>
+        #categories li a.active {
+            background-color: white;
+            color: #3acf87;
+        }
+
+        #categories li a:hover {
+            background-color: white;
+            color: #3acf87;
+        }
+    </style>
+}
+
+@section scripts {
+    <script>
+        $(function () {
+
+            function showError(message) {
+                var $errorDiv = $('#categories-add-error-msg');
+                $errorDiv.css('display', 'block').css('color', 'red').show();
+                $errorDiv.html(message).fadeOut(3000);
+            }
+
+            var $selectType = $('input[type=radio].select-category-type');
+
+            $selectType.on('change', function () {
+                var checkedValue = $('input[type=radio].select-category-type:checked').val();
+                var createButton = $('#create-button');
+
+                if (checkedValue === "main") {
+                    createButton.show();
+                    $('#categories-holder').hide();
+                } else if (checkedValue === "sub") {
+                    $('#categories-holder').show();
+                    createButton.show();
+                } else if (checkedValue === "del") {
+                    $('#categories-holder').show();
+                    $('#delete-button').show();
+                }
+
+            });
+
+            $('a').on('click', function (e) {
+                e.preventDefault();
+                $('#categories-holder').find('a').each(function (index, child) {
+                    child.className -= 'active';
+                });
+                $(this).addClass('active');
+            });
+
+            $('#create-button').on('click', function () {
+                var checkedValue = $('input[type=radio].select-category-type:checked').val();
+                var parId = null;
+
+                if (checkedValue === "sub") {
+                    parId = $('#categories-holder').find('a.active').attr('data-cat-id');
+
+                    if (parId == null) {
+                        showError('You must select sub category');
+                        return;
+                    }
+                }
+
+                var categoryName = $('#category-name-input').val();
+                if (categoryName === '') {
+                    showError('You must set category name');
+                    return;
+                }
+
+                var token = $('input[name="__RequestVerificationToken"]').val();
+
+                var data = {
+                    __RequestVerificationToken: token,
+                    name: categoryName,
+                    parentId: parId
+                }
+
+                $.ajax({
+                    url: '/Categories/Add',
+                    type: 'POST',
+                    data: data,
+                    success: function (res) {
+                        console.log(res);
+                    },
+                    error: function (res) {
+                        alert('Error adding category');
+                    }
+
+                });
+
+            });
+
+            $('#delete-button').on('click', function () {
+                var deleteId = $('#categories-holder').find('a.active').attr('data-cat-id');
+
+                if (deleteId === undefined) {
+                    showError('You should select category to delete');
+                    return;
+                }
+
+
+                var token = $('input[name="__RequestVerificationToken"]').val();
+                var data = {
+                    __RequestVerificationToken: token,
+                    id: deleteId
+                }
+                debugger;
+
+                $.ajax({
+                    url: '/Categories/Delete',
+                    type: 'DELETE',
+                    data: data,
+                    success: function (res) {
+                        console.log(res);
+                    }, error: function (res) {
+                        alert('Error deleting category');
+                    }
+                });
+            });
+
+        });
+
+    </script>
+}

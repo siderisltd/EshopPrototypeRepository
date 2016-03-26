@@ -18,7 +18,7 @@
 
 
         [OutputCache(Duration = 1, VaryByParam = "none")]
-        public ActionResult GetCategories()
+        public ActionResult GetCategoriesTree()
         {
             var categories = this.categoriesService.GetAllCategories().To<CategoryViewModel>().ToList();
             CategoriesTreeModel model = new CategoriesTreeModel { Seed = null, Categories = categories };
