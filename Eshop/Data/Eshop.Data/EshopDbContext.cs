@@ -10,7 +10,7 @@
     public class EshopDbContext : IdentityDbContext<User>, IEshopDbContext
     {
         public EshopDbContext()
-            : base("EshopDbConnection", throwIfV1Schema: false)
+            : base("EshopDbContext", throwIfV1Schema: false)
         {
         }
 
