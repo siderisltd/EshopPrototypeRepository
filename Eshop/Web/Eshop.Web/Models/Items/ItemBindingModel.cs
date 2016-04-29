@@ -2,10 +2,6 @@
 {
     using System.Resources;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using Resources;
-    using Microsoft.VisualStudio.Modeling.Design;
 
     public class ItemBindingModel
     {
