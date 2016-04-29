@@ -12,7 +12,7 @@
     using Eshop.Data.Repositories;
     using Image = Eshop.Data.Models.Image;
 
-    public class ImagesService : BaseService<Image> , IImagesService
+    public class ImagesService : BaseService<Image>, IImagesService
     {
         private readonly IImageHelper imageHelper;
 
@@ -24,18 +24,19 @@
                 System.Drawing.Image brandImage = cache["brandImage"] as System.Drawing.Image;
                 if (brandImage == null)
                 {
-                    var brandImg = System.Drawing.Image.FromFile(GlobalConstants.Services.APP_ROOT_PATH + "Content\\Uploads\\Brand\\brand.png");
+                    var brandImg = System.Drawing.Image.FromFile(GlobalConstants.ServicesConstants.APP_ROOT_PATH + "Content\\Uploads\\Brand\\brand.png");
                     cache["brandImage"] = brandImg;
                     brandImage = brandImg;
                 }
+
                 return brandImage;
             }
         }
 
-        private readonly string rootImagesFolder = GlobalConstants.Services.ROOT_IMAGES_FOLDER;
+        private readonly string rootImagesFolder = GlobalConstants.ServicesConstants.ROOT_IMAGES_FOLDER;
 
         public ImagesService(IRepository<Image> repo, IImageHelper imageHelper)
-            :base(repo)
+            : base(repo)
         {
             this.imageHelper = imageHelper;
         }
@@ -48,10 +49,9 @@
             image.AuthorId = authorId;
             this.repo.Add(image);
             this.repo.SaveChanges();
-            var imagePath = date + "\\" + (image.Id % GlobalConstants.Services.MAX_FILES_IN_DIRECTORY);
+            var imagePath = date + "\\" + (image.Id % GlobalConstants.ServicesConstants.MAX_FILES_IN_DIRECTORY);
             image.PathOriginalSize = imagePath + "\\ori_" + image.Title + ".jpg";
             image.PathResizedImage = imagePath + "\\400_" + image.Title + ".jpg";
-
 
             var directory = this.rootImagesFolder + imagePath;
             if (!Directory.Exists(directory))
@@ -74,10 +74,9 @@
         {
             var date = DateTime.Now.ToString("MM.yyyy");
 
-            var imagePath = date + "\\" + (image.Id % GlobalConstants.Services.MAX_FILES_IN_DIRECTORY);
+            var imagePath = date + "\\" + (image.Id % GlobalConstants.ServicesConstants.MAX_FILES_IN_DIRECTORY);
             image.PathOriginalSize = imagePath + "\\ori_" + image.Title + ".jpg";
             image.PathResizedImage = imagePath + "\\400_" + image.Title + ".jpg";
-
 
             var directory = this.rootImagesFolder + imagePath;
             if (!Directory.Exists(directory))
@@ -126,4 +125,3 @@
         }
     }
 }
-

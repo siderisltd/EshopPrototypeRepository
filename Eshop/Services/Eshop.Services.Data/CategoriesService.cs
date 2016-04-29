@@ -35,14 +35,14 @@ namespace Eshop.Services.Data
         public bool DeleteCategory(int Id)
         {
             var category = this.repo.GetById(Id);
-            if(category == null)
+            if (category == null)
             {
                 return false;
             }
+
             this.repo.HardDelete(category);
             this.repo.SaveChanges();
             return true;
         }
-
     }
 }

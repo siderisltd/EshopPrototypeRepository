@@ -31,12 +31,14 @@ namespace Eshop.Data.Migrations
                 this.CreateCategories(context);
             }
         }
+
         private void CreateCarts(EshopDbContext context, IList<User> seededUsers)
         {
             foreach (var user in seededUsers)
             {
                 user.Cart = new Cart();
             }
+
             context.SaveChanges();
         }
 
@@ -46,6 +48,7 @@ namespace Eshop.Data.Migrations
             {
                 user.WishList = new WishList();
             }
+
             context.SaveChanges();
         }
 
@@ -55,6 +58,7 @@ namespace Eshop.Data.Migrations
             {
                 user.PurchaseHistory = new PurchaseHistory();
             }
+
             context.SaveChanges();
         }
 
@@ -75,7 +79,6 @@ namespace Eshop.Data.Migrations
                     userManager.AddToRole(currentUser.Id, AppRoles.CLIENT_ROLE);
                     result.Add(currentUser);
                 }
-
             }
 
             var ultimateUsername = "ultimate";
@@ -151,7 +154,6 @@ namespace Eshop.Data.Migrations
                 Name = "Fetish",
                 Parent = mensSweatersCategory
             };
-
 
             context.Categories.Add(womansVibratorsCategory);
             context.Categories.Add(mensShoesCategory);

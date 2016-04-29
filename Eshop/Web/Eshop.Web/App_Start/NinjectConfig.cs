@@ -73,21 +73,19 @@ namespace Eshop.Web
         {
             RegisterDependencies(kernel);
 
-
-            //kernel.Bind(typeof(IItemsService)).To(typeof(ItemsService));
-
+            // kernel.Bind(typeof(IItemsService)).To(typeof(ItemsService));
             kernel.Bind(x => x
-                .From(Assemblies.ServicesDataAssembly)
+                .From(AssembliesConstants.SERVICES_DATA_ASSEMBLY)
                 .SelectAllClasses()
                 .BindDefaultInterface());
 
             kernel.Bind(x => x
-                .From(Assemblies.ServicesCommonAssembly)
+                .From(AssembliesConstants.SERVICES_COMMON_ASSEMBLY)
                 .SelectAllClasses()
                 .BindDefaultInterface());
 
             //kernel.Bind(x => x
-            //    .From(Assemblies.ServicesWebAssembly)
+            //    .From(Assemblies.SERVICES_WEB_ASSEMBLY)
             //    .SelectAllClasses()
             //    .BindDefaultInterface());
         }

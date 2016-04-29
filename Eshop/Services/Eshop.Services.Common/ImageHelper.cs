@@ -13,10 +13,10 @@
         /// This method uses Internet connection to get the image as byte array. It cam be very easy modified to return
         /// it in MemoryStream
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="longestSide"></param>
-        /// <param name="format"></param>
-        /// <returns></returns>
+        /// <param name="url">imageUrl</param>
+        /// <param name="longestSide">desired longest side</param>
+        /// <param name="format">image format</param>
+        /// <returns>byte array with the resized image</returns>
         public byte[] GetFromUrl(string url, int longestSide, ImageFormat format)
         {
             byte[] imgArray = this.GetFromUrl(url);
@@ -24,13 +24,14 @@
 
             using (MemoryStream stream = new MemoryStream())
             {
-                // write the string to the stream  
+                // write the string to the stream
                 stream.Write(imgArray, 0, imgArray.Length);
 
-                // create the start Bitmap from the MemoryStream that contains the image  
+                // create the start Bitmap from the MemoryStream that contains the image
                 Image startBitmap = new Bitmap(stream);
                 resizedImgArray = this.ScaleImage(startBitmap, longestSide, format);
             }
+
             return resizedImgArray;
         }
 
@@ -40,10 +41,10 @@
 
             using (MemoryStream stream = new MemoryStream())
             {
-                // write the string to the stream  
+                // write the string to the stream
                 stream.Write(imgArray, 0, imgArray.Length);
 
-                // create the start Bitmap from the MemoryStream that contains the image  
+                // create the start Bitmap from the MemoryStream that contains the image
                 Image startBitmap = new Bitmap(stream);
                 return this.ImageToByte(startBitmap, format);
             }
@@ -79,6 +80,7 @@
                             memStream.Write(buffer, 0, bytesRead);
                             bytesRead = stream.Read(buffer, 0, buffer.Length);
                         }
+
                         imageData = memStream.ToArray();
                     }
                 }
@@ -122,6 +124,7 @@
                 {
                     ms.Write(buffer, 0, read);
                 }
+
                 return ms.ToArray();
             }
         }
@@ -136,6 +139,7 @@
 
                 byteArray = stream.ToArray();
             }
+
             return byteArray;
         }
 

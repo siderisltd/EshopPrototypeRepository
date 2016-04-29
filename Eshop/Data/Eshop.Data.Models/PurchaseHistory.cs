@@ -14,7 +14,8 @@
             this.wishItems = new HashSet<CartItem>();
         }
 
-        [Key, ForeignKey("User")]
+        [Key]
+        [ForeignKey("User")]
         public string UserId { get; set; }
 
         public User User { get; set; }

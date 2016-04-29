@@ -8,16 +8,17 @@
         private ICollection<DeliveryOption> domesticDelivery;
         private ICollection<DeliveryOption> worldwideDelivery;
         private ICollection<DeliveryOption> europeDelivery;
+        private ICollection<Item> items;
 
         public Delivery()
         {
             this.domesticDelivery = new HashSet<DeliveryOption>();
             this.worldwideDelivery = new HashSet<DeliveryOption>();
             this.europeDelivery = new HashSet<DeliveryOption>();
+            this.items = new HashSet<Item>();
         }
 
         public int Id { get; set; }
-
 
         public virtual ICollection<DeliveryOption> WorldwideDelivery
         {
@@ -35,6 +36,12 @@
         {
             get { return this.domesticDelivery; }
             set { this.domesticDelivery = value; }
+        }
+
+        public virtual ICollection<Item> Items
+        {
+            get { return this.items; }
+            set { this.items = value; }
         }
     }
 }

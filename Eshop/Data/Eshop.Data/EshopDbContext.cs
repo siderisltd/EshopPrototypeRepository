@@ -51,6 +51,15 @@
             return base.SaveChanges();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Category>()
+            //            .HasOptional(x => x.Items)
+            //            .WithOptionalDependent()
+            //            .WillCascadeOnDelete(true);
+
+            base.OnModelCreating(modelBuilder);
+        }
 
         private void ApplyAuditInfoRules()
         {
@@ -61,7 +70,7 @@
                             e.Entity is IAuditInfo &&
                             ((e.State == EntityState.Added) || (e.State == EntityState.Modified))))
             {
-                var entity = (IAuditInfo) entry.Entity;
+                var entity = (IAuditInfo)entry.Entity;
 
                 if (entry.State == EntityState.Added && entity.CreatedOn == default(DateTime))
                 {
@@ -72,8 +81,6 @@
                     entity.ModifiedOn = DateTime.Now;
                 }
             }
-
-
         }
     }
 }

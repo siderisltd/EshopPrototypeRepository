@@ -5,13 +5,18 @@ using System.Web.Routing;
 
 namespace Eshop.Web
 {
+    using System.Globalization;
     using System.Reflection;
+    using System.Threading;
     using Infrastructure.Mapping;
 
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("bg-BG");
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("bg-BG");
+
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             DbConfig.Initialize();

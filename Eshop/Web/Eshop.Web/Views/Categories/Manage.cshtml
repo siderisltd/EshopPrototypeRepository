@@ -1,7 +1,9 @@
-﻿@model Eshop.Web.Models.Categories.CategoryViewModel
+﻿@using Resources
+
+@model Eshop.Web.Models.Categories.CategoryViewModel
 
 @{
-    ViewBag.Title = "Create category";
+    ViewBag.Title = @CategoriesResources.ManageCategoriesTitle;
 }
 
 <div id="categories-add-error-msg" style="display:none;"></div>
@@ -12,9 +14,9 @@
 @Html.LabelFor(x => x.Name)
 @Html.TextBoxFor(x => x.Name, new { id = "category-name-input" })
 
-<label><input class="select-category-type" type="radio" name="selectType" value="main"> Main category<br></label>
-<label><input class="select-category-type" type="radio" name="selectType" value="sub"> Sub category<br></label>
-<label><input class="select-category-type" type="radio" name="selectType" value="del"> Delete category<br></label>
+<label><input class="select-category-type" type="radio" name="selectType" value="main"> @CategoriesResources.MainCategory<br></label>
+<label><input class="select-category-type" type="radio" name="selectType" value="sub"> @CategoriesResources.SubCategory<br></label>
+<label><input class="select-category-type" type="radio" name="selectType" value="del"> @CategoriesResources.DeleteCategory<br></label>
 
 <div id="categories-holder" style="display:none;">
     @Html.Action("GetCategoriesTree", "ChildActions")

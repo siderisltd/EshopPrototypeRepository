@@ -1,11 +1,15 @@
 ﻿@using Eshop.Web.Models
 
-@model Eshop.Web.Models.Categories.CategoriesTreeModel 
+@model Eshop.Web.Models.Categories.CategoriesTreeModel
 
-<div class="widget margin-top-0">
-    <h3 class="headline">Categories</h3><span class="line"></span><div class="clearfix"></div>
+<nav id="menu" class="both">
+    <ul class="nav clearfix">
         @{
             Html.RenderPartial("_CategoriesRecursion", Model);
         }
-    <div class="clearfix"></div>
-</div>
+    </ul>
+ 
+
+
+</nav>
+

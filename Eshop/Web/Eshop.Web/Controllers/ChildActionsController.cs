@@ -16,7 +16,6 @@
             this.categoriesService = categoriesService;
         }
 
-
         [OutputCache(Duration = 1, VaryByParam = "none")]
         public ActionResult GetCategoriesTree()
         {

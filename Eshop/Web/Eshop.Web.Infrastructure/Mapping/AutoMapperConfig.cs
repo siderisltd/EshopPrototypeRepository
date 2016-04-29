@@ -26,14 +26,14 @@
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
-                        where i.IsGenericType && i.GetGenericTypeDefinition() == typeof (IMapFrom<>) &&
+                        where i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapFrom<>) &&
                               !t.IsAbstract &&
                               !t.IsInterface
                         select new
-                               {
-                                   Source = i.GetGenericArguments()[0],
-                                   Destination = t
-                               }).ToArray();
+                        {
+                            Source = i.GetGenericArguments()[0],
+                            Destination = t
+                        }).ToArray();
 
             foreach (var map in maps)
             {
@@ -45,10 +45,10 @@
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
-                        where typeof (IHaveCustomMappings).IsAssignableFrom(t) &&
+                        where typeof(IHaveCustomMappings).IsAssignableFrom(t) &&
                               !t.IsAbstract &&
                               !t.IsInterface
-                        select (IHaveCustomMappings) Activator.CreateInstance(t)).ToArray();
+                        select (IHaveCustomMappings)Activator.CreateInstance(t)).ToArray();
 
             foreach (var map in maps)
             {

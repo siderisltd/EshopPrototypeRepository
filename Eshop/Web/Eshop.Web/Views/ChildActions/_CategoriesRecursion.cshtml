@@ -1,5 +1,7 @@
 ﻿@using Eshop.Web.Models
 @using Eshop.Web.Models.Categories
+@using Eshop.Web.Infrastructure;
+
 @model Eshop.Web.Models.Categories.CategoriesTreeModel
 
 @{
@@ -22,7 +24,7 @@
                 CategoriesTreeModel inner = new CategoriesTreeModel {Seed = category.Id, Categories = Model.Categories};
 
                 <li>
-                    <a href="/Items/ByCategory?category=@category.Name&id=@category.Id" data-cat-id="@category.Id">@category.Name</a>
+                    <a href="/Items/ByCategory/@category.Name" data-cat-id="@category.Id">@category.Name.GetCategoryResourceByName()</a>
                     @Html.Partial("_CategoriesRecursion", inner, new ViewDataDictionary {{"unorderedListId", "someValue"}})
                 </li>
             }

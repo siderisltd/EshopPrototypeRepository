@@ -4,7 +4,8 @@
     using Eshop.Data.Models.BaseModels.Contracts;
     using Eshop.Data.Repositories;
 
-    public class BaseService<T> : IBaseService<T> where T : class, IBaseModel
+    public class BaseService<T> : IBaseService<T>
+        where T : class, IBaseModel
     {
         protected readonly IRepository<T> repo;
 

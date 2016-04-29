@@ -3,7 +3,8 @@
     using System.Linq;
     using Eshop.Data.Models.BaseModels.Contracts;
 
-    public interface IBaseService<T> where T : class, IBaseModel
+    public interface IBaseService<T> 
+        where T : class, IBaseModel
     {
         IQueryable<T> All();
 

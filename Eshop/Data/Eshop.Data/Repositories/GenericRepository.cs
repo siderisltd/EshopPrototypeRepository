@@ -6,7 +6,8 @@
     using System.Linq;
     using Models.BaseModels.Contracts;
 
-    public sealed class GenericRepository<T> : IRepository<T> where T : class, IBaseModel
+    public sealed class GenericRepository<T> : IRepository<T>
+        where T : class, IBaseModel
     {
         public GenericRepository(IEshopDbContext context)
         {

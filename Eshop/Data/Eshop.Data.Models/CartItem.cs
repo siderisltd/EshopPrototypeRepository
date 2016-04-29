@@ -27,7 +27,7 @@
         [ForeignKey("WishListId")]
         public virtual WishList WishList { get; set; }
 
-        public string PurchaseHistoryId { get; set; } 
+        public string PurchaseHistoryId { get; set; }
 
         [ForeignKey("PurchaseHistoryId")]
         public virtual PurchaseHistory PurchaseHistory { get; set; }

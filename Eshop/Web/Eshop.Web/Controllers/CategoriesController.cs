@@ -4,6 +4,7 @@
     using System.Web.Mvc;
     using Data.Common.Roles;
     using Data.Models;
+    using Helpers.Attributes;
     using Helpers.Filters;
     using Models.Categories;
 
@@ -32,6 +33,7 @@
             {
                 return this.View("Manage", model);
             }
+
             var category = new Category { Name = model.Name, ParentId = model.ParentId };
             this.categoriesService.AddCategory(category);
             this.TempData["Notification"] = "Category added";
@@ -58,8 +60,6 @@
             {
                 return this.View("Manage", model);
             }
-
         }
-
     }
 }
