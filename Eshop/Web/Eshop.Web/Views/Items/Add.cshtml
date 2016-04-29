@@ -1,0 +1,9 @@
+﻿@using Resources
+
+@model Eshop.Web.Models.Items.ItemBindingModel
+
+@using (Html.BeginForm("Add", "items", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(x => Model)
+}
