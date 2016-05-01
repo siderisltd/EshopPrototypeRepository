@@ -50,6 +50,8 @@
 
         public DateTime? DeletedOn { get; set; }
 
+        public string Culture { get; set; }
+
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
         {
             var userIdentity = manager.CreateIdentity(this, DefaultAuthenticationTypes.ApplicationCookie);

@@ -1,6 +1,5 @@
 ﻿namespace Eshop.Web.Models.Items
 {
-    using System.Resources;
     using System.Collections.Generic;
 
     public class ItemBindingModel

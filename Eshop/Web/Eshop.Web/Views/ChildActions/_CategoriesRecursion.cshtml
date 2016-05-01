@@ -24,7 +24,7 @@
                 CategoriesTreeModel inner = new CategoriesTreeModel {Seed = category.Id, Categories = Model.Categories};
 
                 <li>
-                    <a href="/Items/ByCategory/@category.Name" data-cat-id="@category.Id">@category.Name.GetCategoryResourceByName()</a>
+                    @Html.ActionLink(@category.Name.GetCategoryResourceByName(), "ByCategory", "Items", null,  new { data_cat_id="@category.Id"})
                     @Html.Partial("_CategoriesRecursion", inner, new ViewDataDictionary {{"unorderedListId", "someValue"}})
                 </li>
             }

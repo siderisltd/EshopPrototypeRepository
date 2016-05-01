@@ -1,6 +1,5 @@
 ﻿namespace Eshop.Web.Infrastructure
 {
-    using System;
     using System.Reflection;
     using System.Resources;
     using GlobalConstants;

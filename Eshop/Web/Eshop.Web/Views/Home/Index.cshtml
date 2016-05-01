@@ -7,7 +7,6 @@
 <!-- Sidebar
 ================================================== -->
 <div class="four columns">
-
     <!-- Categories -->
     @Html.Action("GetCategoriesTree", "ChildActions")
     <!-- Categories -->
@@ -93,10 +92,10 @@
         <figure class="product">
             <div class="mediaholder">
                 <a href="variable-product-page.html">
-                    <img alt="" src="~/Content/Theme/images/shop_item_01.jpg" />
+                    <img alt="" src="~/Content/Theme/images/shop_item_01.jpg"/>
                     <div class="cover">
                         !
-                        <img alt="" src="~/Content/Theme/images/shop_item_01_hover.jpg" />
+                        <img alt="" src="~/Content/Theme/images/shop_item_01_hover.jpg"/>
                     </div>
                 </a>
                 <a href="#" class="product-button"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
@@ -112,7 +111,7 @@
         </figure>
     </div>
     <div class="clearfix"></div>
-    
+
     <!-- Product #1 -->
     <div class="four shop columns">
         <figure class="product">
@@ -201,3 +200,23 @@
     </div>
 
 </div>
+
+
+@*@section scripts {
+    <script>
+        $(function() {
+            var userLang = navigator.language || navigator.userLanguage;
+            if (userLang) {
+                var data = {
+                    cultureName: userLang,
+                    buttonClick: false
+                }
+                debugger;
+                $.post('/Culture/ChangeCulture', data, function () {
+                    console.log('culture is changed');
+                });
+            }
+
+        });
+    </script>
+}*@

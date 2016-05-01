@@ -5,18 +5,18 @@ using System.Web.Routing;
 
 namespace Eshop.Web
 {
-    using System.Globalization;
     using System.Reflection;
-    using System.Threading;
     using Infrastructure.Mapping;
+    using Services.Data.Contracts;
+    using Ninject;
 
     public class MvcApplication : HttpApplication
     {
+        [Inject]
+        public IUsersService usersService;
+
         protected void Application_Start()
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("bg-BG");
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("bg-BG");
-
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             DbConfig.Initialize();
@@ -29,5 +29,46 @@ namespace Eshop.Web
             var autoMapperConfig = new AutoMapperConfig();
             autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
         }
+
+        //protected void Application_PreRequestHandlerExecute(object sender, EventArgs e)
+        //{
+        //    if (Context.Handler is IRequiresSessionState || Context.Handler is IReadOnlySessionState)
+        //    {
+        //        if (HttpContext.Current.Session == null)
+        //        {
+        //            return;
+        //        }
+
+        //        var sessionCulture = HttpContext.Current.Session["cultureInfo"];
+        //        CultureInfo cultureToSet = CultureInfo.GetCultureInfo("en");
+
+        //        if (sessionCulture == null)
+        //        {
+        //            if (this.User.Identity.IsAuthenticated)
+        //            {
+        //                var usService = new UsersService(new GenericRepository<User>(new EshopDbContext()));
+        //                var userId = this.User.Identity.GetUserId();
+        //                var userCulture = usService.GetUserCulture(userId);
+        //                if (!string.IsNullOrEmpty(userCulture))
+        //                {
+        //                    var usersCulture = CultureInfo.GetCultureInfo(userCulture);
+        //                    HttpContext.Current.Session["cultureInfo"] = usersCulture;
+        //                    sessionCulture = usersCulture;
+        //                    cultureToSet = sessionCulture as CultureInfo;
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            cultureToSet = CultureInfo.GetCultureInfo(sessionCulture.ToString());
+        //        }
+
+
+        //        Thread.CurrentThread.CurrentCulture = cultureToSet;
+        //        Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+
+        //        return;
+        //    }
+        //}
     }
 }

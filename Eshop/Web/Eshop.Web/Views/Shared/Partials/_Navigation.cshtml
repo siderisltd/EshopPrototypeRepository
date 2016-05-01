@@ -1,4 +1,10 @@
-﻿<div class="container">
+﻿@{
+    var routeValues = this.ViewContext.RouteData.Values;
+    var controller = routeValues["controller"] as string;
+    var action = routeValues["action"] as string;
+}
+
+<div class="container">
     <div class="sixteen columns">
 
         <a href="#menu" class="menu-trigger"><i class="fa fa-bars"></i> Menu</a>
@@ -6,7 +12,7 @@
         <nav id="navigation">
             <ul class="menu" id="responsive">
 
-                <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "homepage"})</li>
+                <li>@Html.ActionLink("Home", "Index", "Home", new {@class = "homepage"})</li>
 
 
                 <li class="dropdown">
@@ -53,14 +59,16 @@
                             <div class="one-column hidden-on-mobile">
                                 <ul>
                                     <li><span class="mega-headline">Paragraph</span></li>
-                                    <li><p>This <a href="#">Mega Menu</a> can handle everything. Lists, paragraphs, forms...</p></li>
+                                    <li>
+                                        <p>This <a href="#">Mega Menu</a> can handle everything. Lists, paragraphs, forms...
+                                        </p></li>
                                 </ul>
                             </div>
 
                             <div class="one-fourth-column hidden-on-mobile">
                                 <a href="#" class="img-caption margin-reset">
                                     <figure>
-                                        <img src="~/Content/Theme/images/menu-banner-01.jpg" alt="" />
+                                        <img src="~/Content/Theme/images/menu-banner-01.jpg" alt=""/>
                                         <figcaption>
                                             <h3>Jeans</h3>
                                             <span>Pack for Style</span>
@@ -72,7 +80,7 @@
                             <div class="one-fourth-column hidden-on-mobile">
                                 <a href="#" class="img-caption margin-reset">
                                     <figure>
-                                        <img src="~/Content/Theme/images/menu-banner-02.jpg" alt="" />
+                                        <img src="~/Content/Theme/images/menu-banner-02.jpg" alt=""/>
                                         <figcaption>
                                             <h3>Sunglasses</h3>
                                             <span>Nail the Basics</span>
@@ -103,6 +111,12 @@
                 </li>
                 <li class="demo-button">
                     @Html.ActionLink("Add Item", "Add", "Items")
+                </li>
+                <li class="demo-button">
+                    @Html.ActionLink("Bulgarian", @action, @controller, new { culture = "bg" }, new { rel = "alternate", hreflang = "bg" })
+                </li>
+                <li class="demo-button">
+                   @Html.ActionLink("English", @action, @controller, new { culture = "en" }, new { rel = "alternate", hreflang = "en" })
                 </li>
             </ul>
         </nav>
