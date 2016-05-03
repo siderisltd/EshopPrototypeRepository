@@ -1,9 +1,9 @@
-﻿@using Resources
+﻿@using Resources;
 
 @model Eshop.Web.Models.Items.ItemBindingModel
     
 <fieldset>
-    <legend>@ItemsResources.AddItemTitle</legend>
+    <legend>@Resources.ItemsResources.AddItemTitle</legend>
     <div class="form-group">
         @Html.LabelFor(x => x.Title, new { @class = "col-lg-2 control-label" })
         <div class="col-lg-10">

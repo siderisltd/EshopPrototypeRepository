@@ -1,11 +1,14 @@
 ﻿namespace Eshop.Web.Models.Items
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using App_GlobalResources.Items;
 
     public class ItemBindingModel
     {
         public int CategoryId { get; set; }
 
+        [Display(ResourceType =typeof(ItemsResources), Name= "AddItemTitle")]
         public string Title { get; set; }
 
         public string Description { get; set; }

@@ -16,7 +16,7 @@
             this.categoriesService = categoriesService;
         }
 
-        [OutputCache(Duration = 1, VaryByParam = "none")]
+        [OutputCache(Duration = 5 * 60, VaryByCustom = "culture")]
         public ActionResult GetCategoriesTree()
         {
             var categories = this.categoriesService.GetAllCategories().To<CategoryViewModel>().ToList();
