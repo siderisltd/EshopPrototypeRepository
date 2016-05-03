@@ -547,6 +547,8 @@
     <Content Include="Views\ChildActions\_Categories.cshtml" />
     <Content Include="Views\Items\Add.cshtml" />
     <Content Include="Views\Items\EditorTemplates\ItemBindingModel.cshtml" />
+    <Content Include="Views\Items\EditorTemplates\DecimalPrice.cshtml" />
+    <Content Include="Views\Items\EditorTemplates\DecimalPercentage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

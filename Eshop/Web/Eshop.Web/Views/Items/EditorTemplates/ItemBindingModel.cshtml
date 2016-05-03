@@ -3,7 +3,7 @@
 @model Eshop.Web.Models.Items.ItemBindingModel
     
 <fieldset>
-    <legend>@Resources.ItemsResources.AddItemTitle</legend>
+    <legend>@ItemsResources.AddItemTitle</legend>
     <div class="form-group">
         @Html.LabelFor(x => x.Title, new { @class = "col-lg-2 control-label" })
         <div class="col-lg-10">
@@ -14,47 +14,26 @@
     <div class="form-group">
         @Html.LabelFor(x => x.Description, new { @class = "col-lg-2 control-label" })
         <div class="col-lg-10">
-            <textarea class="form-control" rows="3" id="textArea"></textarea>
-            @Html.EditorFor(x => x.Description)
+            @Html.TextAreaFor(x => x.Description, new { @class="form-control", rows = "6" })
         </div>
     </div>
-    @*<div class="form-group">
-        <label class="col-lg-2 control-label">Radios</label>
-        <div class="col-lg-10">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                    Option one is this
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                    Option two can be something else
-                </label>
-            </div>
-        </div>
-    </div>
+
     <div class="form-group">
-        <label for="select" class="col-lg-2 control-label">Selects</label>
+        @Html.LabelFor(x => x.Quantity, new { @class = "col-lg-2 control-label" })
         <div class="col-lg-10">
-            <select class="form-control" id="select">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-            <br>
-            <select multiple="" class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+            @Html.EditorFor(x => x.Quantity)
         </div>
-    </div>*@
+    </div>
+
+
+        @Html.LabelFor(x => x.DiscountPercentage)
+        @Html.EditorFor(x => x.DiscountPercentage)
+
+
+        @Html.LabelFor(x => x.Price, new { @class = "col-lg-2 control-label" })
+        @Html.EditorFor(x => x.Price)
+
+
     <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
             <button type="reset" class="btn btn-default">Cancel</button>

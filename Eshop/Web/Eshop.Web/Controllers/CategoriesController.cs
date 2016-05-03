@@ -1,12 +1,12 @@
 ﻿namespace Eshop.Web.Controllers
 {
-    using Services.Data.Contracts;
     using System.Web.Mvc;
     using Data.Common.Roles;
     using Data.Models;
     using Helpers.Attributes;
     using Helpers.Filters;
     using Models.Categories;
+    using Services.Data.Contracts;
 
     [AuthorizeRoles(AppRoles.ADMIN_ROLE, AppRoles.CLIENT_ROLE, AppRoles.ULTIMATE_ROLE)]
     public class CategoriesController : BaseController

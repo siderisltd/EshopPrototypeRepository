@@ -1,7 +1,7 @@
 ﻿namespace Eshop.Web.Controllers
 {
-    using System.Web.Mvc;
     using System.Linq;
+    using System.Web.Mvc;
     using GlobalConstants;
     using Infrastructure.Mapping.Contracts;
     using Models.Items;

@@ -8,15 +8,21 @@
     {
         public int CategoryId { get; set; }
 
-        [Display(ResourceType =typeof(ItemsResources), Name= "AddItemTitle")]
+        [Display(ResourceType =typeof(ItemsResources), Name= "Title")]
         public string Title { get; set; }
 
+        [Display(ResourceType = typeof(ItemsResources), Name = "Description")]
         public string Description { get; set; }
 
+        [Display(ResourceType = typeof(ItemsResources), Name = "Quantity")]
         public int Quantity { get; set; }
 
+        [Display(ResourceType = typeof(ItemsResources), Name = "Price")]
+        [UIHint("DecimalPrice")]
         public decimal Price { get; set; }
 
+        [Display(ResourceType = typeof(ItemsResources), Name = "DiscountPercentage")]
+        [UIHint("DecimalPercentage")]
         public decimal DiscountPercentage { get; set; }
 
         public int DeliveryId { get; set; }

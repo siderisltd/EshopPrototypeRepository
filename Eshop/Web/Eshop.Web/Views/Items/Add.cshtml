@@ -5,5 +5,5 @@
 @using (Html.BeginForm("Add", "items", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
-    @Html.EditorFor(x => Model)
+    @Html.EditorForModel(Model)
 }

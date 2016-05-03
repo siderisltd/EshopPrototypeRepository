@@ -1,0 +1,14 @@
+﻿@model decimal?
+
+<div>
+    @*@Model.ToString("{0:P2}", System.Globalization.CultureInfo.CurrentCulture)*@
+    @*@{
+        IFormatProvider formatProvider = new System.Globalization.CultureInfo("en-US");
+    }
+    <span class="currency">@Model.ToString("C", formatProvider)</span>*@
+
+    @Html.TextBox(
+    "",
+    string.Format("{0:c}", Model),
+    new { @class = "text-box single-line" })
+</div>
